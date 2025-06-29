@@ -25,13 +25,13 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.6em;
   line-height: 1.1;
 }
 
@@ -66,5 +66,9 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+  button.checked {
+    background: #9f0712;
+    color: #ffffff;
   }
 }

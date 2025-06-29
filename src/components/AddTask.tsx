@@ -13,8 +13,12 @@ const AddTask = ({ addTaskName }: AddTaskProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    addTaskName(taskName);
-    setTaskName("");
+    if (taskName === "") {
+      alert("Task is empty!");
+    } else {
+      addTaskName(taskName);
+      setTaskName("");
+    }
   };
 
   return (
