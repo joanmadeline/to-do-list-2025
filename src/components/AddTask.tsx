@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from "react";
+// import useTaskStore from "../store/useTaskStore";
 
 interface AddTaskProps {
   addTaskName: (task: string) => void;
 }
 
 const AddTask = ({ addTaskName }: AddTaskProps) => {
+  // const addTask = useTaskStore((state) => state.addTask);
   const [taskName, setTaskName] = useState("");
 
   const handleChange = (value: string) => {
