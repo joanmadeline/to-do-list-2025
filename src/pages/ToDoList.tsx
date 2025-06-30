@@ -1,6 +1,6 @@
-import Header from "./Header";
+import Header from "../components/Header";
 
-import TaskList from "./TaskList";
+import TaskList from "../components/TaskList";
 
 const ToDoList = () => {
   return (

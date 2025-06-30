@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import AddTask from "./AddTask";
 import TaskCard from "./TaskCard";
 import { TASK_KEY } from "../utils/constants/localStorageConstants";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface TaskProps {
   id: string;
@@ -11,8 +12,8 @@ interface TaskProps {
 }
 
 const TaskList = () => {
-  const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [hasLoaded, setHasLoaded] = useState(false);
+  // const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const [tasks, setTasks] = useLocalStorage<TaskProps[]>(TASK_KEY, []);
 
   const addTasks = (item: string) => {
     const exists = tasks.some(
@@ -34,20 +35,20 @@ const TaskList = () => {
   };
 
   //load from local storage
-  useEffect(() => {
-    const storedTasks = localStorage.getItem(TASK_KEY);
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-    setHasLoaded(true);
-  }, []);
+  // useEffect(() => {
+  //   const storedTasks = localStorage.getItem(TASK_KEY);
+  //   if (storedTasks) {
+  //     setTasks(JSON.parse(storedTasks));
+  //   }
+  //   setHasLoaded(true);
+  // }, []);
 
   //save to local storage
-  useEffect(() => {
-    if (hasLoaded) {
-      localStorage.setItem(TASK_KEY, JSON.stringify(tasks));
-    }
-  }, [tasks, hasLoaded]);
+  // useEffect(() => {
+  //   if (hasLoaded) {
+  //     localStorage.setItem(TASK_KEY, JSON.stringify(tasks));
+  //   }
+  // }, [tasks, hasLoaded]);
 
   const deleteTask = (idToRemove: string) => {
     setTasks((updatedTasks) => updatedTasks.filter((t) => t.id !== idToRemove));
